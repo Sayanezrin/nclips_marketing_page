@@ -254,9 +254,9 @@ h3 {
 .orbit-stage {
   --screen-w: 240px;
   --screen-h: 490px;
-  --side-x: clamp(188px, 23vw, 286px);
-  --side-y: clamp(-48px, -4vw, -24px);
-  --back-y: clamp(-190px, -17vw, -132px);
+  --orbit-x: clamp(178px, 22vw, 280px);
+  --orbit-front-y: clamp(46px, 5vw, 74px);
+  --orbit-back-y: clamp(-196px, -17vw, -132px);
   position: relative;
   display: grid;
   min-height: clamp(600px, 66vw, 760px);
@@ -296,7 +296,7 @@ h3 {
   transform: translate(-50%, -50%);
   transform-origin: center;
   will-change: transform, opacity, filter;
-  animation: screenTakeover 18s ease-in-out infinite;
+  animation: frontOverlapOrbit 18s ease-in-out infinite;
 }
 
 .orbit-card-one {
@@ -386,7 +386,7 @@ h3 {
   z-index: 4;
 }
 
-@keyframes screenTakeover {
+@keyframes frontOverlapOrbit {
   0%,
   27.777%,
   100% {
@@ -396,26 +396,32 @@ h3 {
     z-index: 8;
   }
 
-  33.333% {
-    opacity: 0.72;
-    filter: saturate(0.78);
-    transform: translate(-50%, -50%) translate(calc(-1 * var(--side-x)), var(--side-y)) scale(0.85);
-    z-index: 3;
+  38% {
+    opacity: 0.88;
+    filter: saturate(0.92);
+    transform: translate(-50%, -50%) translate(calc(-1 * var(--orbit-x)), var(--orbit-front-y)) scale(0.85);
+    z-index: 6;
   }
 
-  45%,
-  55% {
-    opacity: 0;
-    filter: saturate(0.6);
-    transform: translate(-50%, -50%) translate(0, var(--back-y)) scale(0.7);
+  50% {
+    opacity: 0.6;
+    filter: saturate(0.72);
+    transform: translate(-50%, -50%) translate(0, var(--orbit-back-y)) scale(0.7);
     z-index: 1;
   }
 
-  66.666% {
-    opacity: 0.72;
-    filter: saturate(0.78);
-    transform: translate(-50%, -50%) translate(var(--side-x), var(--side-y)) scale(0.85);
-    z-index: 3;
+  62% {
+    opacity: 0.78;
+    filter: saturate(0.82);
+    transform: translate(-50%, -50%) translate(var(--orbit-x), calc(var(--orbit-back-y) * 0.35)) scale(0.7);
+    z-index: 2;
+  }
+
+  78% {
+    opacity: 0.9;
+    filter: saturate(0.94);
+    transform: translate(-50%, -50%) translate(var(--orbit-x), var(--orbit-front-y)) scale(0.85);
+    z-index: 6;
   }
 }
 
@@ -815,9 +821,9 @@ h3 {
   .orbit-stage {
     --screen-w: 160px;
     --screen-h: 330px;
-    --side-x: 120px;
-    --side-y: -22px;
-    --back-y: -112px;
+    --orbit-x: 118px;
+    --orbit-front-y: 42px;
+    --orbit-back-y: -112px;
     min-height: 430px;
   }
 
