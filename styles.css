@@ -577,9 +577,38 @@ h3 {
 
 .footer-links {
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 10px;
   color: #405168;
   font-weight: 700;
+}
+
+.footer-links a {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f8fbff;
+  color: #203852;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.footer-links a:hover {
+  border-color: rgba(20, 88, 216, 0.32);
+  background: var(--blue);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.footer-links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 @media (max-width: 980px) {
