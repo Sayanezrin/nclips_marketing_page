@@ -15,6 +15,9 @@ Then open:
 http://127.0.0.1:5177
 ```
 
+The local server uses `local-server.js`. Vercel uses the serverless function in
+`api/enquiries.js`.
+
 ## What it includes
 
 - NCLEX-focused marketing hero section
@@ -26,10 +29,8 @@ http://127.0.0.1:5177
 - Social media links for Instagram, Facebook, LinkedIn, and YouTube
 
 Submitted enquiries are saved to:
-
-```text
-data/enquiries.json
-```
+When running locally without SMTP, submissions are handled by the local backend response.
+On Vercel, enquiries are sent by email through the `api/enquiries.js` serverless function.
 
 Before publishing, update the phone number, email address, and social media URLs in `index.html`.
 
@@ -48,3 +49,5 @@ SMTP_PASS=your-email-app-password
 ```
 
 For Gmail or Google Workspace, use an app password instead of your normal account password.
+
+In Vercel, add the same values under Project Settings > Environment Variables, then redeploy.

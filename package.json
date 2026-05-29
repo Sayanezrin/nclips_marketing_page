@@ -3,7 +3,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js"
+    "start": "node local-server.js"
   },
   "dependencies": {
     "nodemailer": "^7.0.10"
