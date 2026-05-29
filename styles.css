@@ -567,6 +567,13 @@ h3 {
   margin: 8px 0 0;
 }
 
+.footer small {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
 .footer-links {
   flex-wrap: wrap;
   gap: 10px;
