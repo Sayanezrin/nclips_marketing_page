@@ -252,7 +252,9 @@ h3 {
 }
 
 .orbit-stage {
-  --orbit-radius: clamp(142px, 21vw, 260px);
+  --carousel-left: clamp(-245px, -20vw, -170px);
+  --carousel-front: clamp(86px, 9vw, 112px);
+  --carousel-right: clamp(180px, 22vw, 255px);
   position: relative;
   display: grid;
   min-height: clamp(540px, 62vw, 720px);
@@ -278,30 +280,32 @@ h3 {
 .orbit-ring {
   position: absolute;
   inset: 0;
-  margin: auto;
-  width: 1px;
-  height: 1px;
-  animation: orbitSpin 24s linear infinite;
-  transform-origin: center;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .orbit-card {
-  --angle: 0deg;
   position: absolute;
   top: 50%;
   left: 50%;
   width: clamp(104px, 16vw, 172px);
   aspect-ratio: 9 / 16;
-  transform: rotate(var(--angle)) translateX(var(--orbit-radius));
-  transform-origin: 0 0;
+  opacity: 0.96;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+.orbit-card-one {
+  animation: carouselOne 9s ease-in-out infinite;
 }
 
 .orbit-card-two {
-  --angle: 120deg;
+  animation: carouselTwo 9s ease-in-out infinite;
 }
 
 .orbit-card-three {
-  --angle: 240deg;
+  animation: carouselThree 9s ease-in-out infinite;
 }
 
 .orbit-media {
@@ -312,7 +316,6 @@ h3 {
   border-radius: 8px;
   background: #06111f;
   box-shadow: 0 22px 50px rgba(20, 42, 74, 0.18);
-  animation: orbitCounterSpin 24s linear infinite;
 }
 
 .orbit-media video,
@@ -331,7 +334,7 @@ h3 {
   border-radius: clamp(28px, 3.6vw, 44px);
   background: #06111f;
   box-shadow: 0 36px 70px rgba(20, 42, 74, 0.28);
-  z-index: 2;
+  z-index: 4;
 }
 
 .phone-mockup::before {
@@ -381,19 +384,75 @@ h3 {
   z-index: 4;
 }
 
-@keyframes orbitSpin {
-  to {
-    transform: rotate(360deg);
+@keyframes carouselOne {
+  0%,
+  100% {
+    opacity: 0.58;
+    filter: saturate(0.75);
+    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
+    z-index: 2;
+  }
+
+  33% {
+    opacity: 1;
+    filter: saturate(1.05);
+    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
+    z-index: 6;
+  }
+
+  66% {
+    opacity: 0.66;
+    filter: saturate(0.82);
+    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+    z-index: 2;
   }
 }
 
-@keyframes orbitCounterSpin {
-  from {
-    transform: rotate(calc(-1 * var(--angle)));
+@keyframes carouselTwo {
+  0%,
+  100% {
+    opacity: 1;
+    filter: saturate(1.05);
+    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
+    z-index: 6;
   }
 
-  to {
-    transform: rotate(calc(-1 * var(--angle) - 360deg));
+  33% {
+    opacity: 0.66;
+    filter: saturate(0.82);
+    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+    z-index: 2;
+  }
+
+  66% {
+    opacity: 0.58;
+    filter: saturate(0.75);
+    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
+    z-index: 2;
+  }
+}
+
+@keyframes carouselThree {
+  0%,
+  100% {
+    opacity: 0.66;
+    filter: saturate(0.82);
+    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+    z-index: 2;
+  }
+
+  33% {
+    opacity: 0.58;
+    filter: saturate(0.75);
+    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
+    z-index: 2;
+  }
+
+  66% {
+    opacity: 1;
+    filter: saturate(1.05);
+    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
+    z-index: 6;
   }
 }
 
@@ -791,7 +850,9 @@ h3 {
   }
 
   .orbit-stage {
-    --orbit-radius: clamp(110px, 32vw, 150px);
+    --carousel-left: -118px;
+    --carousel-front: 62px;
+    --carousel-right: 118px;
     min-height: 500px;
   }
 
