@@ -11,11 +11,9 @@ function isValidEnquiry(payload) {
       typeof payload.name === "string" &&
       typeof payload.email === "string" &&
       typeof payload.phone === "string" &&
-      typeof payload.status === "string" &&
       payload.name.trim() &&
       payload.email.includes("@") &&
-      payload.phone.trim() &&
-      payload.status.trim()
+      payload.phone.trim()
   );
 }
 
@@ -53,9 +51,7 @@ function buildEnquiryEmail(enquiry) {
     ["Name", enquiry.name],
     ["Email", enquiry.email],
     ["Phone", enquiry.phone],
-    ["Current Status", enquiry.status],
-    ["Interested In", enquiry.interest || "Not specified"],
-    ["Message", enquiry.message || "No message added"],
+    ["Source", enquiry.source],
     ["Submitted At", enquiry.createdAt],
     ["Enquiry ID", enquiry.id],
   ];
@@ -134,9 +130,7 @@ module.exports = async function handler(request, response) {
       name: payload.name.trim(),
       email: payload.email.trim(),
       phone: payload.phone.trim(),
-      status: payload.status.trim(),
-      interest: String(payload.interest || "").trim(),
-      message: String(payload.message || "").trim(),
+      source: "NCLIPS marketing landing page",
       createdAt: new Date().toISOString(),
     };
     const emailResult = await sendEnquiryEmail(enquiry);

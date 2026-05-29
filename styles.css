@@ -56,7 +56,6 @@ img {
 .nav-links,
 .trust-row,
 .hero-actions,
-.social-links,
 .footer-links {
   display: flex;
   align-items: center;
@@ -230,46 +229,28 @@ h3 {
   font-weight: 700;
 }
 
-.hero-visual {
+.video-frame {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(217, 227, 236, 0.9);
   border-radius: 8px;
-  background: linear-gradient(180deg, #ffffff, var(--soft-blue));
+  background: #06111f;
   box-shadow: var(--shadow);
 }
 
-.hero-visual img {
+.video-frame video {
   width: 100%;
-  min-height: 520px;
+  aspect-ratio: 16 / 10;
+  background: #06111f;
   object-fit: cover;
-  object-position: center;
 }
 
-.hero-card {
-  position: absolute;
-  display: grid;
-  gap: 4px;
-  border: 1px solid rgba(217, 227, 236, 0.9);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 15px 17px;
-  box-shadow: 0 18px 38px rgba(20, 42, 74, 0.13);
-}
-
-.hero-card span {
+.video-note {
+  margin: 0;
+  background: #ffffff;
+  padding: 12px 14px;
   color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.readiness-card {
-  top: 24px;
-  left: 24px;
-}
-
-.question-card {
-  right: 24px;
-  bottom: 24px;
+  font-size: 0.85rem;
 }
 
 .section {
@@ -364,7 +345,6 @@ h3 {
   box-shadow: 0 12px 30px rgba(20, 42, 74, 0.06);
 }
 
-.practice-section,
 .enquiry-section {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
@@ -493,26 +473,38 @@ h3 {
   font-weight: 750;
 }
 
-.enquiry-section {
+.enquiry-section,
+.importance-section {
   background: linear-gradient(135deg, #0f2946, #103f65);
   color: #ffffff;
 }
 
 .enquiry-copy p,
-.enquiry-copy .eyebrow {
+.enquiry-copy .eyebrow,
+.importance-copy p,
+.importance-copy .eyebrow {
   color: rgba(255, 255, 255, 0.76);
 }
 
-.contact-list,
-.social-links {
+.importance-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.importance-section .outcome-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-list {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 22px;
 }
 
-.contact-list a,
-.social-links a {
+.contact-list a {
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
@@ -592,8 +584,8 @@ h3 {
 
 @media (max-width: 980px) {
   .hero-section,
-  .practice-section,
   .enquiry-section,
+  .importance-section,
   .support-panel {
     grid-template-columns: 1fr;
   }
@@ -604,8 +596,8 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero-visual img {
-    min-height: 420px;
+  .importance-section .outcome-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -632,15 +624,6 @@ h3 {
   .support-list,
   .chapter-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-visual img {
-    min-height: 340px;
-  }
-
-  .hero-card {
-    position: static;
-    margin: 12px;
   }
 
   .footer {

@@ -9,9 +9,6 @@ form.addEventListener("submit", async (event) => {
     name: data.get("name"),
     email: data.get("email"),
     phone: data.get("phone"),
-    status: data.get("status"),
-    interest: data.get("interest"),
-    message: data.get("message"),
   };
 
   note.textContent = "Submitting your enquiry...";
