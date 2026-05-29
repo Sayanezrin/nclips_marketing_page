@@ -54,7 +54,6 @@ img {
 
 .brand,
 .nav-links,
-.trust-row,
 .hero-actions,
 .footer-links {
   display: flex;
@@ -212,21 +211,6 @@ h3 {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 28px;
-}
-
-.trust-row {
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.trust-row span {
-  border: 1px solid rgba(20, 88, 216, 0.14);
-  border-radius: 999px;
-  background: #ffffff;
-  padding: 9px 13px;
-  color: #405168;
-  font-size: 0.88rem;
-  font-weight: 700;
 }
 
 .video-frame {
@@ -631,16 +615,22 @@ h3 {
 
 @media (max-width: 720px) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
-  .nav-links {
+  .brand,
+  .header-cta {
     display: none;
   }
 
-  .header-cta {
+  .nav-links {
+    display: flex;
     width: 100%;
+    justify-content: center;
+    gap: clamp(26px, 8vw, 48px);
+    font-size: 1.05rem;
   }
 
   .hero-section {
