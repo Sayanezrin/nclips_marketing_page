@@ -245,14 +245,6 @@ h3 {
   object-fit: cover;
 }
 
-.video-note {
-  margin: 0;
-  background: #ffffff;
-  padding: 12px 14px;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
 .section {
   padding-top: 82px;
   padding-bottom: 82px;
