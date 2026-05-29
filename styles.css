@@ -252,9 +252,14 @@ h3 {
 }
 
 .orbit-stage {
-  --carousel-left: clamp(-245px, -20vw, -170px);
-  --carousel-front: clamp(86px, 9vw, 112px);
-  --carousel-right: clamp(180px, 22vw, 255px);
+  --orbit-front-x: clamp(82px, 10vw, 126px);
+  --orbit-front-y: clamp(22px, 3vw, 42px);
+  --orbit-top-x: clamp(124px, 18vw, 218px);
+  --orbit-top-y: clamp(-182px, -18vw, -124px);
+  --orbit-back-x: clamp(-226px, -20vw, -154px);
+  --orbit-back-y: clamp(-70px, -6vw, -42px);
+  --orbit-bottom-x: clamp(-136px, -12vw, -88px);
+  --orbit-bottom-y: clamp(118px, 13vw, 174px);
   position: relative;
   display: grid;
   min-height: clamp(540px, 62vw, 720px);
@@ -297,15 +302,15 @@ h3 {
 }
 
 .orbit-card-one {
-  animation: carouselOne 9s ease-in-out infinite;
+  animation: orbitAntiClockwiseOne 9s ease-in-out infinite;
 }
 
 .orbit-card-two {
-  animation: carouselTwo 9s ease-in-out infinite;
+  animation: orbitAntiClockwiseTwo 9s ease-in-out infinite;
 }
 
 .orbit-card-three {
-  animation: carouselThree 9s ease-in-out infinite;
+  animation: orbitAntiClockwiseThree 9s ease-in-out infinite;
 }
 
 .orbit-media {
@@ -384,75 +389,108 @@ h3 {
   z-index: 4;
 }
 
-@keyframes carouselOne {
+@keyframes orbitAntiClockwiseOne {
   0%,
   100% {
-    opacity: 0.58;
-    filter: saturate(0.75);
-    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
-    z-index: 2;
-  }
-
-  33% {
     opacity: 1;
-    filter: saturate(1.05);
-    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
-    z-index: 6;
+    filter: saturate(1.08);
+    transform: translate(-50%, -50%) translate(var(--orbit-front-x), var(--orbit-front-y)) scale(1.18);
+    z-index: 7;
   }
 
-  66% {
-    opacity: 0.66;
-    filter: saturate(0.82);
-    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+  25% {
+    opacity: 0.62;
+    filter: saturate(0.78);
+    transform: translate(-50%, -50%) translate(var(--orbit-top-x), var(--orbit-top-y)) scale(0.62);
     z-index: 2;
+  }
+
+  50% {
+    opacity: 0.55;
+    filter: saturate(0.72);
+    transform: translate(-50%, -50%) translate(var(--orbit-back-x), var(--orbit-back-y)) scale(0.58);
+    z-index: 1;
+  }
+
+  75% {
+    opacity: 0.82;
+    filter: saturate(0.92);
+    transform: translate(-50%, -50%) translate(var(--orbit-bottom-x), var(--orbit-bottom-y)) scale(0.82);
+    z-index: 5;
   }
 }
 
-@keyframes carouselTwo {
-  0%,
-  100% {
+@keyframes orbitAntiClockwiseTwo {
+  0% {
+    opacity: 0.55;
+    filter: saturate(0.72);
+    transform: translate(-50%, -50%) translate(var(--orbit-back-x), var(--orbit-back-y)) scale(0.58);
+    z-index: 1;
+  }
+
+  25% {
+    opacity: 0.82;
+    filter: saturate(0.92);
+    transform: translate(-50%, -50%) translate(var(--orbit-bottom-x), var(--orbit-bottom-y)) scale(0.82);
+    z-index: 5;
+  }
+
+  50% {
     opacity: 1;
-    filter: saturate(1.05);
-    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
-    z-index: 6;
+    filter: saturate(1.08);
+    transform: translate(-50%, -50%) translate(var(--orbit-front-x), var(--orbit-front-y)) scale(1.18);
+    z-index: 7;
   }
 
-  33% {
-    opacity: 0.66;
-    filter: saturate(0.82);
-    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+  75% {
+    opacity: 0.62;
+    filter: saturate(0.78);
+    transform: translate(-50%, -50%) translate(var(--orbit-top-x), var(--orbit-top-y)) scale(0.62);
     z-index: 2;
   }
 
-  66% {
-    opacity: 0.58;
-    filter: saturate(0.75);
-    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
-    z-index: 2;
+  100% {
+    opacity: 0.55;
+    filter: saturate(0.72);
+    transform: translate(-50%, -50%) translate(var(--orbit-back-x), var(--orbit-back-y)) scale(0.58);
+    z-index: 1;
   }
 }
 
-@keyframes carouselThree {
-  0%,
-  100% {
-    opacity: 0.66;
-    filter: saturate(0.82);
-    transform: translate(-50%, -50%) translateX(var(--carousel-right)) scale(0.66);
+@keyframes orbitAntiClockwiseThree {
+  0% {
+    opacity: 0.62;
+    filter: saturate(0.78);
+    transform: translate(-50%, -50%) translate(var(--orbit-top-x), var(--orbit-top-y)) scale(0.62);
     z-index: 2;
   }
 
-  33% {
-    opacity: 0.58;
-    filter: saturate(0.75);
-    transform: translate(-50%, -50%) translateX(var(--carousel-left)) scale(0.62);
-    z-index: 2;
+  25% {
+    opacity: 0.55;
+    filter: saturate(0.72);
+    transform: translate(-50%, -50%) translate(var(--orbit-back-x), var(--orbit-back-y)) scale(0.58);
+    z-index: 1;
   }
 
-  66% {
+  50% {
+    opacity: 0.82;
+    filter: saturate(0.92);
+    transform: translate(-50%, -50%) translate(var(--orbit-bottom-x), var(--orbit-bottom-y)) scale(0.82);
+    z-index: 5;
+  }
+
+  75% {
     opacity: 1;
-    filter: saturate(1.05);
-    transform: translate(-50%, -50%) translateX(var(--carousel-front)) scale(1.18);
-    z-index: 6;
+    filter: saturate(1.08);
+    transform: translate(-50%, -50%) translate(var(--orbit-front-x), var(--orbit-front-y)) scale(1.18);
+    z-index: 7;
+  }
+
+  100% {
+    opacity: 0.62;
+    filter: saturate(0.78);
+    transform: translate(-50%, -50%) translate(var(--orbit-top-x), var(--orbit-top-y)) scale(0.62);
+    z-index: 2;
   }
 }
 
@@ -850,9 +888,14 @@ h3 {
   }
 
   .orbit-stage {
-    --carousel-left: -118px;
-    --carousel-front: 62px;
-    --carousel-right: 118px;
+    --orbit-front-x: 58px;
+    --orbit-front-y: 24px;
+    --orbit-top-x: 92px;
+    --orbit-top-y: -132px;
+    --orbit-back-x: -118px;
+    --orbit-back-y: -46px;
+    --orbit-bottom-x: -74px;
+    --orbit-bottom-y: 114px;
     min-height: 500px;
   }
 
